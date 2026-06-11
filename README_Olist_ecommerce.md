@@ -1,6 +1,6 @@
 # Olist E-commerce Data Analysis
 
-Projeto de Engenharia e Análise de Dados desenvolvido a partir da base pública do Olist.
+Projeto de Análise de Dados desenvolvido a partir da base pública do Olist.
 
 O objetivo foi transformar arquivos CSV transacionais em um ambiente analítico composto por pipeline ETL, modelagem dimensional em SQL Server e dashboards no Power BI, permitindo analisar receita, logística, vendedores, produtos e satisfação dos clientes.
 
@@ -39,7 +39,7 @@ olist-ecommerce-data-analysis/
 │   └── validacao.sql
 ├── dashboard/
 │   └── olist_dashboard.pbix
-└── docs/
+└── documentação_técnica/
     └── documentacao_tecnica.pdf
 ```
 
@@ -54,10 +54,10 @@ olist-ecommerce-data-analysis/
 
 ## Tecnologias
 
-* Python (pandas, SQLAlchemy)
+* Python (pandas, SQLAlchemy, numpy)
 * SQL Server (T-SQL)
 * Power BI (DAX)
-* Star Schema
+* Star Schema/Snowflake
 * SQL Server Agent / Auditoria de carga
 * Logging e Lock File
 
@@ -76,7 +76,7 @@ olist-ecommerce-data-analysis/
 * fact_sales
 * fact_payment
 
-A modelagem foi estruturada em esquema estrela para simplificar consultas analíticas e melhorar a performance dos dashboards.
+A modelagem foi estruturada em esquema estrela para simplificar consultas analíticas e melhorar a performance dos dashboards e a escolha por duas fatos deve-se a granularidades diferentes.
 
 ## Qualidade e Governança
 
@@ -128,11 +128,9 @@ A análise mostrou que pedidos entregues após a data prometida apresentam queda
 
 Entre novembro de 2017 e agosto de 2018 foi observado um crescimento expressivo da receita.
 
-Para entender se esse aumento gerou impacto operacional, a view **vw_KPI_Entregas** foi utilizada para monitorar os indicadores logísticos do período. Os resultados apontaram 67.089 pedidos entregues, 90,13% de entregas dentro do prazo e atraso médio de 8 dias entre os pedidos atrasados.
+Para entender se esse aumento gerou impacto operacional, a view **vw_KPI_Entregas** foi utilizada para monitorar os indicadores logísticos do período. O crescimento de receita ocasionou uma deterioração do nível de serviço de entrega. Esse resultado indica a necessidade de diversificação de transportadoras e de monitoramento em tempo real das entregas como medidas preventivas ao aumento de atrasos.
 
-O período coincide com a redução da taxa Selic e com uma política monetária expansionista voltada à recuperação da atividade econômica após a recessão de 2015–2016. Sob a perspectiva macroeconômica, a queda dos juros tende a estimular crédito e consumo, comportamento compatível com o crescimento observado no marketplace.
-
-Ao mesmo tempo, observou-se uma pequena deterioração dos indicadores logísticos, sugerindo que o aumento do volume de vendas exerceu pressão adicional sobre a operação.
+O período coincide com a redução da taxa Selic e com uma política monetária expansionista. Sob a perspectiva macroeconômica, a queda dos juros tende a estimular crédito e consumo, comportamento compatível com o crescimento observado no marketplace.
 
 ## Dashboard
 
